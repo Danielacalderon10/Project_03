@@ -4,19 +4,27 @@
   "description": "... # Project 3",
   "main": "app.js",
   "scripts": {
+    "start": "node app.js",
+    "dev": "nodemon app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Danielacalderon10/project3.git"
   },
-  "author": "",
+  "author": "daniela",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/Danielacalderon10/project3/issues"
   },
   "homepage": "https://github.com/Danielacalderon10/project3#readme",
   "dependencies": {
-    "express": "^4.17.3"
+    "bcryptjs": "^2.4.3",
+    "ejs": "^3.1.6",
+    "express": "^4.17.3",
+    "morgan": "^1.10.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.15"
   }
 }
