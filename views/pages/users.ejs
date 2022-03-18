@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet"  type= "text/css" href="style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap" rel="stylesheet">
+    <title><%= title %></title>
+  </head>
+
+  <%- include('../partials/header.ejs') %>
+
+  <body>
+    <main>
+        <img class="userslogo" src='../Assets/logo_mrcoffee.png' > 
+
+      <div class="part1"><h1><%= title %> </h1>
+      <h2>All current users</h2></div>
+      <table class="userstable" >
+         <thead>
+            <tr id="tablefirstpart">
+               <th><b>First name</b></th>
+               <th><b>FLast name</b></th>
+               <th><b>Email</b></th>
+            </tr>
+         </thead>
+         <tbody>
+            <!-- LOOP THROUGH ALL USERS -->
+            <% for(let i = 0; i < users.length; i++) { %>
+               <tr>
+                  <!-- First name -->
+                  <td><%= users[i].firstname %></td>
+                  <!-- Last name -->
+                  <td><%= users[i].lastname %></td>
+                  <!-- Email -->
+                  <td><%= users[i].email %></td>
+               </tr>
+               <% } %>
+         </tbody>
+      </table>
+    </main>
+
+    <%- include('../partials/footer') %>
+
+  </body>
+</html>

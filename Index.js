@@ -3,7 +3,7 @@
 const express = require('express');
 
 //import libraries and data
-const { users, schedules} = require('./data');
+const {users, schedules} = require('./data');
 const data = require('./data');
 const path = require('path');
 let morgan = require('morgan');
@@ -19,7 +19,7 @@ const PORT = 3000 || process.env.PORT;
 
 //---middleware
 // app.use(express.static('public'));
-app.use(express.static(path.join(__dirname, 'public'))) //QUESTION: I HAVE TO PUT WIEWS INSTEAD OF PUBLIC TO ACCES TO HOME PAGE 
+app.use(express.static(path.join(__dirname, 'public'))) 
 
 //bodypaser
 app.use(express.json())
@@ -36,35 +36,22 @@ app.set('views', './views') // sets 'views' folder as teh folder for grabbing te
 
 //--- Routes
 
-  // Base route
-  // app.get('/', (req, res) => {
-  //   res.send('Welcome to our website');
-  // });
+  
   app.get('/', (req, res) => {
-    res.render('pages/home', { users, title: 'welcome' });
+    res.render('pages/home', { users, title: 'Welcome' });
   });
 
-
-   // get data 
-  app.get('/data', (req, res) => {
-    res.json(data);
-  });
   // Get all users 
   app.get('/users', (req, res) => {
-    res.json(users);
+    res.render('pages/users', { users, title: 'Users' });
   });
 
-  // Get all schedules route
+  // Get all schedules 
     app.get('/schedules', (req, res) => {
-        res.json(schedules);
+      res.render('pages/schedules', { users, title: 'Schedules' });
       });
 
-// get specific user
-// app.get('/users/1', (req, res) => {
-//     res.json(data.users[0]);
-//   });
 
-    // get specific user
 app.get('/users/:id', (req, res) => {
     let id = req.params.id
     console.log(id)

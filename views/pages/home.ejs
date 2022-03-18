@@ -16,29 +16,10 @@
   <body>
     <main>
       <div class="part1"><h1><%= title %> </h1>
-      <h2>All current users</h2></div>
-      <table class="table" >
-         <thead>
-            <tr id="tablefirstpart">
-               <th><b>First name</b></th>
-               <th><b>FLast name</b></th>
-               <th><b>Email</b></th>
-            </tr>
-         </thead>
-         <tbody>
-            <!-- LOOP THROUGH ALL USERS -->
-            <% for(let i = 0; i < users.length; i++) { %>
-               <tr>
-                  <!-- First name -->
-                  <td><%= users[i].firstname %></td>
-                  <!-- Last name -->
-                  <td><%= users[i].lastname %></td>
-                  <!-- Email -->
-                  <td><%= users[i].email %></td>
-               </tr>
-               <% } %>
-         </tbody>
-      </table>
+      <h2>TO MR COFFEE</h2></div>
+      
+     <img class="main_logo" src='../Assets/logo_mrcoffee.png' > 
+
     </main>
 
     <%- include('../partials/footer') %>

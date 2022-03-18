@@ -48,19 +48,3 @@ module.exports.schedules = [
     }
 ]
 
-
- module.exports.comps = [
-        {
-          firstname: 'Daniela',
-          lastname: 'Calderon',
-          title: 'System Analyst',
-          tasks: ['leading proyect planning sessions',  'develop codes'],
-          'know-hows': [
-            'communication skills',
-            'data gathering',
-            'research'
-          ],
-          knowledge: ['Programming lenguajes', 'research environment'],
-          'soft-skills': ['autonomous', 'team work', 'organize','patient']
-        }
-      ];
