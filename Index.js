@@ -3,7 +3,7 @@
 const express = require('express');
 
 //import libraries and data
-const { users, schedules, comps } = require('./data');
+const { users, schedules} = require('./data');
 const data = require('./data');
 const path = require('path');
 let morgan = require('morgan');
@@ -41,7 +41,7 @@ app.set('views', './views') // sets 'views' folder as teh folder for grabbing te
   //   res.send('Welcome to our website');
   // });
   app.get('/', (req, res) => {
-    res.render('home', { users, title: 'welcome' });
+    res.render('pages/home', { users, title: 'welcome' });
   });
 
 
@@ -77,6 +77,8 @@ app.get('/users/:id', (req, res) => {
     res.json(data.users[id])
    });
 
+    
+
 // get specific schedule
    ///validation for the schedule
 app.get('/schedules/:id', (req, res) => {
@@ -88,6 +90,26 @@ app.get('/schedules/:id', (req, res) => {
     }
     res.json(data.schedules[ids])
    });
+
+   // get specific user all the schedules 
+
+   app.get('/users/:id/schedules', (req, res) => {
+    const user_id = req.params.id
+    // console.log(id)
+  let sch = []
+    for(let i = 0; i < schedules.length; i++){
+      console.log(schedules[i].user_id)
+      // validation - lowercase?
+      if(schedules[i].user_id == user_id ){
+          // res.json(comps[i])
+          // res.render("individualComp", { comp: comps[i]})
+          sch.push(schedules[i])
+      }
+    }
+    res.json(sch)
+  })
+
+
 
    // create new user / require body parser
 

@@ -4,21 +4,25 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="/styles.css">
+    <link rel="stylesheet"  type= "text/css" href="style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap" rel="stylesheet">
     <title><%= title %></title>
   </head>
 
+  <%- include('../partials/header.ejs') %>
 
   <body>
     <main>
-      <h1><%= title %> </h1>
-      <h2>All current users</h2>
-      <table>
+      <div class="part1"><h1><%= title %> </h1>
+      <h2>All current users</h2></div>
+      <table class="table" >
          <thead>
-            <tr>
-               <th>First name</th>
-               <th>Last name</th>
-               <th>Email</th>
+            <tr id="tablefirstpart">
+               <th><b>First name</b></th>
+               <th><b>FLast name</b></th>
+               <th><b>Email</b></th>
             </tr>
          </thead>
          <tbody>
@@ -37,7 +41,7 @@
       </table>
     </main>
 
-
+    <%- include('../partials/footer') %>
 
   </body>
 </html>

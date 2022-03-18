@@ -1,0 +1,56 @@
+
+*{
+    margin: 0;
+    padding: none;
+    list-style: none;
+}
+
+
+/* Colors::
+#6D7B89 blue
+#F5F5F5 white
+#5D5C5D grey letter
+*/
+
+/*body*/
+body{
+  font-family: 'Montserrat', sans-serif;
+}
+
+/* /header */
+.header {
+  width: 100%;
+  background-color: #a9adb1;
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+
+}
+
+/* home*/
+.part1 {
+  margin: 5%;
+  text-align: center;
+}
+
+.table{
+border: 1px solid;
+width: 60%;
+text-align: center;
+margin-left: auto;
+margin-right: auto;
+}
+
+#tablefirstpart{
+  border: 1px;
+  background-color: #a9adb1;
+}
+
+
+/* footer*/
+
+.footer{
+  margin: 5%;
+  margin-left: auto;
+margin-right: auto;
+}
