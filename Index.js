@@ -38,7 +38,7 @@ app.set('views', './views') // sets 'views' folder as teh folder for grabbing te
 
   
   app.get('/', (req, res) => {
-    res.render('pages/home', { users, title: 'Welcome' });
+    res.render('pages/home', { title: 'Welcome' });
   });
 
   // Get all users 
@@ -48,7 +48,7 @@ app.set('views', './views') // sets 'views' folder as teh folder for grabbing te
 
   // Get all schedules 
     app.get('/schedules', (req, res) => {
-      res.render('pages/schedules', { users, title: 'Schedules' });
+      res.render('pages/schedules', { schedules, title: 'Schedules' });
       });
 
 
@@ -61,6 +61,7 @@ app.get('/users/:id', (req, res) => {
         // res.send('User not available')
         res.status(400).json({msg: "User is  not found"})
     }
+    res.render('pages/users', { users, title: 'Users' });
     res.json(data.users[id])
    });
 

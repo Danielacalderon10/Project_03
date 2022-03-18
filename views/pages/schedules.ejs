@@ -15,8 +15,8 @@
 
   <body>
     <main>
+        <img class="schedulelogo" src='../Assets/logo_mrcoffee.png' > 
       <div class="part1"><h1><%= title %> </h1>
-      <h2>All Schedules</h2></div>
       <table class="scheduletable" >
          <thead>
             <tr id="tablefirstpart">
@@ -26,8 +26,6 @@
                <th><b>End at</b></th>
             </tr>
          </thead>
-
-
          <tbody>
             <!-- LOOP THROUGH ALL SCHEDULES -->
             <% for(let i = 0; i < schedules.length; i++) { %>
@@ -39,7 +37,19 @@
                </tr>
                <% } %>
          </tbody>
-      </table>
+      </table>   </div>
+
+      <div class="part2">
+        <p>Dear user take into count the colum Day the following terms</p>
+        
+        <ol>Day 1: Monday</ol>
+        <ol>Day 2: Tuesday</ol>
+        <ol>Day 3: Wednesday</ol>
+        <ol>Day 4: Thursday</ol>
+        <ol>Day 5: Friday</ol>
+        <ol>Day 6: Saturday</ol>
+        <ol>Day 6: Sunday<ol>
+        </div>
     </main>
 
     <%- include('../partials/footer') %>
