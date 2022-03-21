@@ -18,15 +18,36 @@ body{
 }
 
 /* /header */
+body{
+  font-family: 'Montserrat', sans-serif;
+}
 .header {
   width: 100%;
-  background-color: #a9adb1;
+  background-color: #6D7B89;
   display: flex;
   justify-content: space-between;
-  padding: 20px;
-
 }
 
+.Header_logo{
+  height: 60px;
+  padding: 10px 20px
+}
+.navigation {
+ height: 100%;
+ color: #F5F5F5;
+ padding: 3%;
+}
+
+.navigation a {
+  text-decoration: none;
+  color: white;
+  padding: 30px;
+ 
+ }
+
+ .navigation a:hover {
+  color: rgb(81, 88, 90);
+}
 /* home*/
 .part1 {
   margin: 5%;
@@ -81,7 +102,7 @@ body{
   margin: 5%;
   margin-left: auto;
 margin-right: auto;
-background-color: #a9adb1;
+background-color: #6D7B89;
   display: flex;
   justify-content: space-between;
   padding: 20px;
