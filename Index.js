@@ -51,35 +51,43 @@ app.set('views', './views') // sets 'views' folder as teh folder for grabbing te
       res.render('pages/schedules', { schedules, title: 'Schedules' });
       });
 
+// get user form
+app.get('/addnewuser', (req, res) => {
+  res.render('pages/newUser', { title: 'New Users' });
+});
 
-app.get('/users/:id', (req, res) => {
-    let id = req.params.id
-    console.log(id)
+// get schedule form
+app.get('/addnewschedule', (req, res) => {
+  res.render('pages/newSchedule', { title: 'New Schedule' });
+});
 
-    //validation for the number of users that we have
-    if(id >= data.users.length){
-        // res.send('User not available')
-        res.status(400).json({msg: "User is  not found"})
-    }
-    res.render('pages/users', { users, title: 'Users' });
-    res.json(data.users[id])
-   });
+      //_________________
+ // Get specific users
+app.get('/users/:user_id', (req, res) => {
+  const index = req.params.user_id;
+  const user = users[index];
+
+  // validation to confirm number has been entered
+  if (index >= users.length) {
+    res.status(400).send(`msg: User ${index} is not found`);
+  }
+  res.render('pages/user', {user, title: 'User' })
+});
 
     
 
 // get specific schedule
-   ///validation for the schedule
-app.get('/schedules/:id', (req, res) => {
-    let ids = req.params.id
-    console.log(ids)
-    if(ids >= data.schedules.length){
+app.get('/schedules/:schedules_id', (req, res) => {
+  const index = req.params.schedules_id;
+  const schedule = schedules[index];
 
-        res.status(400).json({msg: "schedule not found"})
-    }
-    res.json(data.schedules[ids])
-   });
+  if (index >= schedules.length) {
+    res.status(400).send(`msg: Schedules ${index} is not found`);
+  }
+  res.render('pages/schedule', {schedule, title: 'Schedule' })
+});
 
-   // get specific user all the schedules 
+   // get specific user all the schedules // QUESTION
 
    app.get('/users/:id/schedules', (req, res) => {
     const user_id = req.params.id
@@ -97,9 +105,9 @@ app.get('/schedules/:id', (req, res) => {
     res.json(sch)
   })
 
+  //_________________
 
-
-   // create new user / require body parser
+   // create new user 
 
    app.post('/users', (req, res) => {
     console.log(req.body)
@@ -123,11 +131,11 @@ const newUser = {
 console.log(newUser)
 
 
-    data.users.push(newUser)
-    res.send(data.users)
+    users.push(newUser)
+    res.redirect('/users')
   });
 
- // create new schedule/ require body parser
+ // create new schedule
 
  app.post('/schedules', (req, res) => {
   console.log(req.body)
@@ -145,8 +153,8 @@ console.log(newUser)
     
   }
   console.log(newSchedule)
-  data.schedules.push(req.body)
-  res.send(req.body)
+  schedules.push(req.body)
+  res.redirect('/schedules')
 });
 
   app.listen(PORT, () => {

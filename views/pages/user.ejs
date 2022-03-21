@@ -8,20 +8,28 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap" rel="stylesheet">
-    <title><%= title %></title>
+    <title><%= user.firstname %> <%= user.lastname %></title>
+    <title>User</title>
   </head>
 
+
   <%- include('../partials/header.ejs') %>
-
   <body>
-    <main>
 
-      <div class="part1"><h1><%= title %> </h1>
-<h2>All customers of our beautiful cafe</h2>
-<img class="main_logo" src='../Assets/logo_mrcoffee.png' > 
-    </main>
-
-    <%- include('../partials/footer') %>
-
+    <h1>User: <%= user.firstname %> <%= user.lastname %></h1>
+    <table>
+      <thead>
+        <tr>
+          <th>Email</th>
+          <th>Password</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><%= user.email %></td>
+          <td><%= user.password %></td>
+        </tr>
+      </tbody>
+    </table>
   </body>
 </html>
