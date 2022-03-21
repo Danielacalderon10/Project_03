@@ -23,7 +23,7 @@
          <thead>
             <tr id="tablefirstpart">
                <th><b>First name</b></th>
-               <th><b>FLast name</b></th>
+               <th><b>Last name</b></th>
                <th><b>Email</b></th>
             </tr>
          </thead>
@@ -31,11 +31,8 @@
             <!-- LOOP THROUGH ALL USERS -->
             <% for(let i = 0; i < users.length; i++) { %>
                <tr>
-                  <!-- First name -->
                   <td><%= users[i].firstname %></td>
-                  <!-- Last name -->
                   <td><%= users[i].lastname %></td>
-                  <!-- Email -->
                   <td><%= users[i].email %></td>
                </tr>
                <% } %>
