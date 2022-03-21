@@ -6,6 +6,9 @@
   "scripts": {
     "start": "node Index.js",
     "dev": "nodemon Index.js",
+    "create_db": "psql -U postgres -f sql/create_db.sql",
+    "create_tables": "psql -U postgres -d schedules -f sql/create_tables.sql",
+    "seed_tables": "psql -U postgres -d schedules -f sql/seed_tables.sql",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -22,7 +25,8 @@
     "bcryptjs": "^2.4.3",
     "ejs": "^3.1.6",
     "express": "^4.17.3",
-    "morgan": "^1.10.0"
+    "morgan": "^1.10.0",
+    "pg-promise": "^10.11.1"
   },
   "devDependencies": {
     "nodemon": "^2.0.15"
