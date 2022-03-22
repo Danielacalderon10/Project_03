@@ -86,9 +86,14 @@ app.get('/users', (req,res) => {
   });
 });
 
-// GET user form
-app.get('/users/add', (req, res) => {
-  res.render('pages/newUser', {title: 'Add User'});
+// get user form
+app.get('/addnewuser', (req, res) => {
+  res.render('pages/newUser', { title: 'New Users' });
+});
+
+// get schedule form
+app.get('/addnewschedule', (req, res) => {
+  res.render('pages/newSchedule', { title: 'New Schedule' });
 });
 
 // GET specific users
@@ -122,6 +127,21 @@ app.post('/users', (req, res) => {
   users.push(newUser);
   res.redirect('/users');
 });
+
+db.any('SELECT * FROM users')
+.then((users) => {
+  users.push(newUser);
+})
+
+
+// GET error
+app.get('*', (req, res) => {
+   res.render('pages/error', {title: '404'});
+ });
+
+
+
+
 
 
 //5
