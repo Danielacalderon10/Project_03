@@ -96,8 +96,13 @@ app.get('/addnewschedule', (req, res) => {
   res.render('pages/newSchedule', { title: 'New Schedule' });
 });
 
-// GET specific users
-app.get('/users/:user_id', (req, res) => {
+
+
+ // Get specific users
+ app.get('/users/:user_id', (req, res) => {
+  db.any('SELECT * FROM users')
+  .then((users) => {
+    // if success;
   const index = req.params.user_id;
   const user = users[index];
 
@@ -105,33 +110,98 @@ app.get('/users/:user_id', (req, res) => {
   if (index >= users.length) {
     res.status(400).send(`msg: User ${index} is not found`);
   }
-  res.render('pages/user', {user})
+  res.render('pages/user', {user, title: 'User' })
+
+})
+.catch((error) => {
+  // error;
+  console.log(error)
+  res.redirect("/error?message=" + error.message)
+});
+});
+
+
+// get specific schedule
+app.get('/schedules/:schedule_id', (req, res) => {
+  db.any('SELECT * FROM schedules')
+  .then((schedules) => {
+    // if success;
+  const index = req.params.schedule_id;
+  const schedule = schedules[index];
+
+  // validation to confirm number has been entered
+  if (index >= schedules.length) {
+    res.status(400).send(`msg: schedule ${index} is not found`);
+  }
+  res.render('pages/schedule', {schedule, title: 'schedule' })
+
+})
+.catch((error) => {
+  // error;
+  console.log(error)
+  res.redirect("/error?message=" + error.message)
+});
 });
 
 // POST new user
 app.post('/users', (req, res) => {
   // 1. Destructure user keys
-  const { firstname, lastname, email, password } = req.body;
+  db.any('SELECT * FROM users')
+  .then((users) => {
+    // if success;
+  const { user_id, firstname, lastname, email, password } = req.body;
   // 2. Encrypt the password with bcryptJS
   let salt = bcrypt.genSaltSync(10);
   let hash = bcrypt.hashSync(password, salt);
   // Store hash in your password DB by creating new user
   const newUser = {
-    firstname: firstname,
-    lastname: lastname,
-    email: email,
-    password: hash
+    "user_id": user_id,
+    "firstname": firstname,
+    "lastname": lastname,
+    "email": email,
+    "password": hash
+
   };
 
   // Push newUser to data array and redirect to users
   users.push(newUser);
   res.redirect('/users');
+})
+
+.catch((error) => {
+  // error;
+  console.log(error)
+  res.redirect("/error?message=" + error.message)
+});
 });
 
-db.any('SELECT * FROM users')
-.then((users) => {
-  users.push(newUser);
-})
+
+// POST new schedule
+app.post('/schedules', (req, res) => {
+  // 1. Destructure user keys
+  db.any('SELECT * FROM schedules')
+  .then((schedules) => {
+    // if success;
+    const {user_id, day, start_at, end_at} = req.body
+    // encrypt data
+    const newSchedule = {
+        "user_id": user_id,
+        "day": day,
+        "start_at": start_at,
+        "end_at": end_at 
+    }
+    console.log(newSchedule)
+    schedules.push(req.body)
+    res.redirect('/schedules')
+  })
+
+.catch((error) => {
+  // error;
+  console.log(error)
+  res.redirect("/error?message=" + error.message)
+});
+});
+
 
 
 // GET error
@@ -140,13 +210,10 @@ app.get('*', (req, res) => {
  });
 
 
-
-
-
-
 //5
 // listen to express
 
   app.listen(PORT, () => {
     console.log(`Example app listening on http://localhost:${PORT}`);
   });
+
