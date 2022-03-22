@@ -8,25 +8,30 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap" rel="stylesheet">
-    <title><%= user.firstname %></title>
+
+    <title>Schedule</title>
   </head>
 
-
-  <%- include('../partials/header.ejs') %>
   <body>
+    <%- include('../partials/header.ejs') %>
 
-    <h1 class="individual">User: <%= user.firstname %> <%= user.lastname %></h1>
-    <table class="userstable" >
+    <h1 class="individual">User: <%= sch.user_id %>
+         </h1>
+    <table class="scheduletable">
       <thead>
         <tr id="tablefirstpart">
-          <th>Email</th>
-          <th>Password</th>
+          <th>User ID</th>
+          <th>Day</th>
+          <th>Start at</th>
+          <th>End at</th>
         </tr>
       </thead>
       <tbody>
         <tr>
-          <td><%= user.email %></td>
-          <td><%= user.password %></td>
+          <td><%= sch.user_id  %></td>
+          <td><%= sch.day %></td>
+          <td><%= sch.start_at %></td>
+          <td><%= sch.end_at %></td>
         </tr>
       </tbody>
     </table>

@@ -102,7 +102,8 @@ app.get('/schedules/:schedules_id', (req, res) => {
           sch.push(schedules[i])
       }
     }
-    res.json(sch)
+    res.render('pages/userSchedule', {sch, title: 'Schedule' })
+  
   })
 
   //_________________
