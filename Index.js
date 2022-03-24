@@ -1,8 +1,8 @@
-//--- Express module
+//1. --- Express module
 
 const express = require('express');
 
-//import libraries and data
+//2. import libraries and data
 const {users, schedules} = require('./data');
 const data = require('./data');
 const path = require('path');
@@ -17,7 +17,7 @@ const PORT = 3000 || process.env.PORT;
 
 
 
-//---middleware
+//3. ---middleware
 // app.use(express.static('public'));
 app.use(express.static(path.join(__dirname, 'public'))) 
 
@@ -34,9 +34,9 @@ app.set('views', './views') // sets 'views' folder as teh folder for grabbing te
 
 
 
-//--- Routes
+//4. --- Routes
 
-  
+    // main 
   app.get('/', (req, res) => {
     res.render('pages/home', { title: 'Welcome' });
   });
@@ -51,17 +51,17 @@ app.set('views', './views') // sets 'views' folder as teh folder for grabbing te
       res.render('pages/schedules', { schedules, title: 'Schedules' });
       });
 
-// get user form
+   // get user form
 app.get('/addnewuser', (req, res) => {
   res.render('pages/newUser', { title: 'New Users' });
 });
 
-// get schedule form
+    // get schedule form
 app.get('/addnewschedule', (req, res) => {
   res.render('pages/newSchedule', { title: 'New Schedule' });
 });
 
-      //_________________
+    
  // Get specific users
 app.get('/users/:user_id', (req, res) => {
   const index = req.params.user_id;
@@ -74,9 +74,7 @@ app.get('/users/:user_id', (req, res) => {
   res.render('pages/user', {user, title: 'User' })
 });
 
-    
-
-// get specific schedule
+// Get specific schedule
 app.get('/schedules/:schedules_id', (req, res) => {
   const index = req.params.schedules_id;
   const schedule = schedules[index];
@@ -87,33 +85,24 @@ app.get('/schedules/:schedules_id', (req, res) => {
   res.render('pages/schedule', {schedule, title: 'Schedule' })
 });
 
-   // get specific user all the schedules // QUESTION
+   // get specific user all the schedules 
 
-   app.get('/users/:id/schedules', (req, res) => {
-    const user_id = req.params.id
-    // console.log(id)
-  let sch = []
-    for(let i = 0; i < schedules.length; i++){
-      console.log(schedules[i].user_id)
-      // validation - lowercase?
-      if(schedules[i].user_id == user_id ){
-          // res.json(comps[i])
-          // res.render("individualComp", { comp: comps[i]})
-          sch.push(schedules[i])
-      }
-    }
-    res.render('pages/userSchedule', {sch, title: 'Schedule' })
-  
+   app.get('/uni/:user_id', (req, res) => {
+    const id = req.params.user_id;
+ 
+    const userschedule = schedules.filter((x) => x.user_id === parseInt(id));
+    console.log(userschedule)
+    res.render('pages/userSchedule', {userschedule})
+    
+    // res.json(_sched);
   })
 
-  //_________________
+//5. --POST
 
-   // create new user 
+   // 5.1 create new user 
 
    app.post('/users', (req, res) => {
     console.log(req.body)
-    //validate data 
-
     //user inputs
     const {firstname, lastname, email, password} = req.body
 
@@ -131,18 +120,15 @@ const newUser = {
 }
 console.log(newUser)
 
-
     users.push(newUser)
     res.redirect('/users')
   });
 
- // create new schedule
+ // 5.2 create new schedule
 
  app.post('/schedules', (req, res) => {
   console.log(req.body)
-  //validate data ,
-
-  //onlyallow  user_id, day, start_at, end_at}
+  
   const {user_id, day, start_at, end_at} = req.body
   // encrypt data
   const newSchedule = {
@@ -158,6 +144,8 @@ console.log(newUser)
   res.redirect('/schedules')
 });
 
+
+//6/ -- listen 
   app.listen(PORT, () => {
     console.log(`Example app listening on http://localhost:${PORT}`);
   });

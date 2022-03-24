@@ -15,7 +15,7 @@
   <body>
     <%- include('../partials/header.ejs') %>
 
-    <h1 class="individual">User: <%= sch.user_id %>
+    <h1 class="individual">User: <%= userschedule.user_id %>
          </h1>
     <table class="scheduletable">
       <thead>
@@ -28,10 +28,10 @@
       </thead>
       <tbody>
         <tr>
-          <td><%= sch.user_id  %></td>
-          <td><%= sch.day %></td>
-          <td><%= sch.start_at %></td>
-          <td><%= sch.end_at %></td>
+          <td><%= userschedule.user_id  %></td>
+          <td><%= userschedule.day %></td>
+          <td><%= userschedule.start_at %></td>
+          <td><%= userschedule.end_at %></td>
         </tr>
       </tbody>
     </table>
