@@ -164,16 +164,18 @@ app.post('/users', (req, res) => {
   };
 
   // Push newUser to data array and redirect to users
-  users.push(newUser);
-  res.redirect('/users');
+  db.none('INSERT INTO users(firstname, lastname, email, password) VALUES ($1, $2, $3, $4)', [firstname, lastname, email, hash])
+  .then(() => {
+    res.redirect('/users');
 })
 
 .catch((error) => {
   // error;
   console.log(error)
-  res.redirect("/error?message=" + error.message)
+  res.send(error.message)
 });
 });
+})
 
 
 // POST new schedule
