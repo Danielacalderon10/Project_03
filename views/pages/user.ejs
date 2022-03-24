@@ -15,16 +15,20 @@
   <%- include('../partials/header.ejs') %>
   <body>
 
-    <h1 class="individual">User: <%= user.firstname %> <%= user.lastname %></h1>
+    <h1 class="individual"> Hello, User: <%= user.firstname %> </h1>
     <table class="userstable" >
       <thead>
         <tr id="tablefirstpart">
+          <th>First name</th>
+          <th>Last name</th>
           <th>Email</th>
           <th>Password</th>
         </tr>
       </thead>
       <tbody>
         <tr>
+          <td><%= user.firstname %></td>
+          <td><%= user.lastname %></td>
           <td><%= user.email %></td>
           <td><%= user.password %></td>
         </tr>
