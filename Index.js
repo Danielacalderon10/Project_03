@@ -36,13 +36,6 @@ app.set('views', './views') // sets 'views' folder as teh folder for grabbing te
 //4.
 //--- Routes
 
-//CRUD commands
-
-//create, read, update, delate
-
-//http verbs
-
-//post, get, put/patch, delate
 
 //ROOT
 app.get('/', (req,res) => {
@@ -184,27 +177,50 @@ app.post('/schedules', (req, res) => {
   db.any('SELECT * FROM schedules')
   .then((schedules) => {
     // if success;
-    const {user_id, day, start_at, end_at} = req.body
+    const {userid, day, start_at, end_at} = req.body
     // encrypt data
     const newSchedule = {
-        "user_id": user_id,
+        "userid": userid,
         "day": day,
         "start_at": start_at,
         "end_at": end_at 
     }
-    console.log(newSchedule)
-    schedules.push(req.body)
-    res.redirect('/schedules')
-  })
+// Push newUser to data array and redirect to schedules --
+// it says null when I entry an userid
+db.none('INSERT INTO schedules(userid, day, start_at, end_at) VALUES ($1, $2, $3, $4)', [userid, day, start_at, end_at])
+.then(() => {
+  res.redirect('/schedules');
+})
 
 .catch((error) => {
-  // error;
-  console.log(error)
-  res.redirect("/error?message=" + error.message)
+// error;
+console.log(error)
+res.send(error.message)
 });
 });
+})
+
+  // get specific user all the schedules 
+
+//   app.get('/uni/:user_id', (req,res) => {
+//     db.any('SELECT * FROM schedules')
+//     .then((schedules) => {
+//       const id = req.params.userid;
+ 
+//     const userschedule = schedules.filter((x) => x.userid === parseInt(id));
+//     console.log(userschedule)
+//     res.render('pages/userSchedule', {userschedule})
 
 
+//     .catch((error) => {
+//         // error;
+//         console.log(error)
+//         res.redirect("/error?message=" + error.message)
+//     });
+//   });
+// }) 
+
+  
 
 // GET error
 app.get('*', (req, res) => {
