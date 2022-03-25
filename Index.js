@@ -85,9 +85,9 @@ app.get('/schedules/:schedules_id', (req, res) => {
   res.render('pages/schedule', {schedule, title: 'Schedule' })
 });
 
-   // get specific user all the schedules 
+   // get specific user all the schedules  /users/:user_id/schedules
 
-   app.get('/uni/:user_id', (req, res) => {
+   app.get('/users/:user_id/schedules', (req, res) => {
     const id = req.params.user_id;
  
     const userschedule = schedules.filter((x) => x.user_id === parseInt(id));
