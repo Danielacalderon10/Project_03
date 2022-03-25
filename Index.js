@@ -202,23 +202,23 @@ res.send(error.message)
 
   // get specific user all the schedules 
 
-//   app.get('/uni/:user_id', (req,res) => {
-//     db.any('SELECT * FROM schedules')
-//     .then((schedules) => {
-//       const id = req.params.userid;
+  app.get('/users/:userid/schedules', (req,res) => {
+    db.any('SELECT * FROM schedules')
+    .then((schedules) => {
+      const id = req.params.userid;
  
-//     const userschedule = schedules.filter((x) => x.userid === parseInt(id));
-//     console.log(userschedule)
-//     res.render('pages/userSchedule', {userschedule})
+    const userschedule = schedules.filter((x) => x.userid === parseInt(id));
+    console.log(userschedule)
+    res.render('pages/userSchedule', {userschedule})
 
-
-//     .catch((error) => {
-//         // error;
-//         console.log(error)
-//         res.redirect("/error?message=" + error.message)
-//     });
-//   });
-// }) 
+})
+    .catch((error) => {
+        // error;
+        console.log(error)
+        res.redirect("/error?message=" + error.message)
+    });
+  
+}) 
 
   
 

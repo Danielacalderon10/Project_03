@@ -15,13 +15,18 @@
 
   <body>
     <main>
-        <img class="userslogo" src='../Assets/logo_mrcoffee.png' > 
+        <img class="schedulelogo" src='../Assets/logo_mrcoffee.png' > 
 
       <div class="part1"><h1><%= title %> </h1>
-      <h2>All current users</h2></div>
+ 
+      <h3>Please click on User ID to ckeck the schedules,</h3> 
+      <h3>Please click on User Name to ckeck the information, Thank you</h3> 
+   </div>
+
       <table class="userstable" >
          <thead>
             <tr id="tablefirstpart">
+               <th><b>User ID</b></th>
                <th><b>First name</b></th>
                <th><b>Last name</b></th>
                <th><b>Email</b></th>
@@ -30,8 +35,9 @@
          <tbody>
             <!-- LOOP THROUGH ALL USERS -->
             <% for(let i = 0; i < users.length; i++) { %>
-               <tr>
-                  <td><%= users[i].firstname %></td>
+               <tr> 
+                  <th><a href= "/users/<%=[i]%>/schedules"> <%= [i] %></a></td>
+                     <td><a href= "/users/<%=[i]%>"> <%= users[i].firstname %></a></td>
                   <td><%= users[i].lastname %></td>
                   <td><%= users[i].email %></td>
                </tr>
