@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet"  type= "text/css" href="/style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap" rel="stylesheet">
+
+    <title>Schedule</title>
+  </head>
+
+  <body>
+    <%- include('../partials/header.ejs') %>
+
+    <h1 class="individual">User: <%= schedule.userid %>
+         </h1>
+    <table class="scheduletable">
+      <thead>
+        <tr id="tablefirstpart">
+          <th>User ID</th>
+          <th>Day</th>
+          <th>Start at</th>
+          <th>End at</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><%= schedule.userid  %></td>
+          <td><%= schedule.day %></td>
+          <td><%= schedule.start_at %></td>
+          <td><%= schedule.end_at %></td>
+        </tr>
+      </tbody>
+    </table>
+  </body>
+</html>

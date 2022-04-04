@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet"  type= "text/css" href="/style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap" rel="stylesheet">
+
+    <title><%= title %></title>
+  </head>
+
+
+  <%- include('../partials/header.ejs') %>
+
+  <body>
+    <main>
+      <div class="part1"><h1>New Schedule </h1>
+
+      
+     <img class="main_logo" src='../Assets/logo_mrcoffee.png' > 
+
+    </main>
+  
+
+ <!--contact form -->
+ <form id="contact-form" action="/schedules" method="POST">
+
+    <!-- User id -->
+    <div>
+        <label for="userid">User ID: *</label><br>
+        <input
+          type="text"
+          name="userid"
+          id="userid"
+          class="input"
+          required
+        /><br><br>
+      </div>
+      <!-- day -->
+      <div>
+        <label for="day">Day: *</label><br>
+        <input
+          type="text"
+          name="day"
+          id="day"
+          class="input"
+          required
+        /><br><br>
+      </div>
+      <!-- start_at -->
+      <div>
+          <label for="start_at">Start at: *</label><br>
+          <input
+            type="text"
+            name="start_at"
+            id="start_at"
+            class="input"
+            required
+          /><br><br>
+        </div>
+        <!-- end at -->
+      <div>
+          <label for="end_at">End_at: *</label><br>
+          <input
+            type="text"
+            name="end_at"
+            id="end_at"
+            class="input"
+            required
+          /><br><br>
+        </div>
+      
+    
+      <!--  Submit -->
+           <div class="hidden submit-container">
+            <input
+              type="submit"
+              name="submit"
+              id="submit"
+              class="submit"
+              value="Send message"
+            />
+          </div>
+    
+           
+          
+        </form>
+  
+  
+
+    <%- include('../partials/footer') %>
+
+  </body>
+</html>
